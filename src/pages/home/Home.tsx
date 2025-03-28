@@ -1,13 +1,13 @@
 import "./Home.scss";
-import { FunctionComponent, useContext, useMemo } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { HomeProps } from "./IHome";
 import Typography from "../../components/Typography/Typography";
 import { NavLink, Outlet } from "react-router";
-import { UserContext } from "../../App";
 import { motion } from "motion/react";
+import { decode } from "../../utils/hashing";
 
 const Home: FunctionComponent<HomeProps> = () => {
-  const user = useContext(UserContext);
+  const user = decode(localStorage.getItem("user"));
 
   const getGreeting = () => {
     const hour = new Date().getHours();
